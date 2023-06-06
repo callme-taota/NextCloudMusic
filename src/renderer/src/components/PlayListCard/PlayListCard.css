@@ -8,6 +8,9 @@
     z-index: 1;
     border-radius: 0.75em;
 }
+.playlistcard-img-cont:hover > .playlistcard-img-blur{
+  opacity: 1;
+}
 .playlistcard-img-blur{
     position: absolute;
     top: 12px;
@@ -45,7 +48,7 @@
 }
 .playlistcard-wd-ct{
     text-align: center;
-    
+
 }
 .playlistcard-daily{
     height: 200px;
@@ -57,12 +60,12 @@
     z-index: 1;
     position: absolute;
     margin-top: -200px;
-   
+
 }
 .playlistcard-imgs-ani{
     animation: move-imgs 38s infinite;
     animation-direction: alternate;
-    
+
 }
 .playlistcard-daily-cont{
     margin-left: 30px;
@@ -81,7 +84,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 .playlistcard-playbtn-triangle{
     width: 50px;
@@ -95,6 +98,6 @@
     }
     100%{
         transform: translateY(-50%);
-        
+
     }
 }

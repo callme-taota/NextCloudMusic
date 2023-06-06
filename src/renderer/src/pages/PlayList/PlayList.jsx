@@ -19,10 +19,10 @@ export default class PlayList extends Component {
     }
 
     async componentDidMount(){
-        let playlistid='2771939044';
+        let playlistid;
         let url = window.location.href
         url = url.split('/')
-        if(url.length===5) playlistid=url[4]
+        if(url.length===6) playlistid=url[5]
         let data = await PlayListInfo(playlistid)
         let coverUrl = 'url(' + data.coverImgUrl + ')';
         let creator = data.creator;
@@ -31,6 +31,7 @@ export default class PlayList extends Component {
         this.setState({ data, coverUrl, creator, description, playlistid })
         let songs = await PlaylistTrack(playlistid)
         this.setState({ songs })
+        PubSub.subscribe('newPlayList',this.newId);
     }
 
     sendId(nodeid,node){
@@ -84,11 +85,11 @@ export default class PlayList extends Component {
                                 onClick={this.sendId.bind(this, key)}
                                 key={key}
                             >
-                                <GridRows 
-                                    name={song.name} 
-                                    id={key + 1} 
-                                    author={song.art} 
-                                    cds={song.aln} 
+                                <GridRows
+                                    name={song.name}
+                                    id={key + 1}
+                                    author={song.art}
+                                    cds={song.aln}
                                     time={song.time_str}
                                     >
                                 </GridRows>

@@ -22,7 +22,7 @@ export default class Album extends Component {
         let playlistid='2771939044';
         let url = window.location.href
         url = url.split('/')
-        if(url.length===5) playlistid=url[4]
+        if(url.length===6) playlistid=url[5]
         let data = await AlbumInfo(playlistid)
         let coverUrl = 'url(' + data.coverImgUrl + ')';
         let creator = data.creator;
@@ -35,7 +35,7 @@ export default class Album extends Component {
         PlayList_State.get()
     }
 
-    
+
     sendId(nodeid,node){
         let s = {
             songs : this.state.songs,
@@ -91,11 +91,11 @@ export default class Album extends Component {
                                 onClick={this.sendId.bind(this, key)}
                                 key={key}
                             >
-                                <GridRows 
-                                    name={song.name} 
-                                    id={key + 1} 
-                                    author={song.art} 
-                                    cds={song.aln} 
+                                <GridRows
+                                    name={song.name}
+                                    id={key + 1}
+                                    author={song.art}
+                                    cds={song.aln}
                                     time={song.time_str}
                                     >
                                 </GridRows>

@@ -1,182 +1,179 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './PlayListCard.css'
 import { isnull, SuperClass } from '../../function/fn'
 import img from '../../img/vicetone.jpg'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import PubSub from 'pubsub-js'
 
+export default function SuperPlayListCard({ model, title, id, imgUrl }) {
+  const [Model, setModel] = useState('basic')
+  const [Models] = useState(['basic', 'long', 'player', 'fm', 'album'])
+  const [ModelId, setModelid] = useState(1)
+  const [Title, setTitle] = useState('专辑/歌手名字')
+  const [Imgurl, setImgUrl] = useState(img)
+  const [strurl, setStrurl] = useState('url(' + img + ')')
+  const [Id, setId] = useState('')
 
-export default class SuperPlayListCard extends Component {
+  const navigate = useNavigate()
 
-    state = {
-        model: 'basic',
-        models: ['basic', 'long', 'player','fm','album'],
-        modelid: 1,
-        title: '专辑/歌手名字',
-        imgUrl: img,
-        strurl: 'url(' + img + ')',
-        ishover:false,
-        id: ''
+  const goPlayer = (e) => {
+    e.preventDefault()
+    navigate('/player/' + Id)
+    PubSub.publish('newPlayer', Id)
+  }
+
+  const goPlaylist = (e) => {
+    e.preventDefault()
+    navigate('/PlayList/' + Id)
+    PubSub.publish('newPlayList', Id)
+  }
+
+  const goAlbum = (e) => {
+    e.preventDefault()
+    navigate('/album/' + Id)
+  }
+
+  useEffect(() => {
+    if (!isnull(model)) {
+      let models = Models
+      setModel(model)
+      let modelid =
+        models.findIndex((item) => {
+          return item === model
+        }) + 1
+      setModelid(modelid);
     }
-
-    componentDidMount() {
-        if (!isnull(this.props.model)) {
-            let models = this.state.models
-            this.setState({ model: this.props.model })
-            let modelid = models.findIndex(item => {
-                return item === this.props.model
-            }) + 1
-            this.setState({ modelid })
-        }
-        if (!isnull(this.props.title)) {
-            this.setState({ title: this.props.title })
-        }
-        if (!isnull(this.props.id)) {
-            this.setState({ id: this.props.id })
-        }
-        if (!isnull(this.props.imgUrl)) {
-            let imgUrl = this.props.imgUrl + '?param=512y512'
-            let strurl = 'url(' + imgUrl + ')'
-            this.setState({ imgUrl, strurl })
-        }
+    if (!isnull(title)) {
+      setTitle(title)
     }
-
-
-    handleMouse = (f) => {
-        return() => {
-            this.setState({ ishover: f })
-        }
+    if (!isnull(id)) {
+      setId(id)
     }
-
-
-    RanderBasic = () => {
-        const { title, imgUrl, strurl, ishover, id } = this.state
-        return(
-            <div style={{ position: 'relative' }}>
-                <Link to={'/PlayList/' + id}>
-                    <div className='playlistcard-img-cont'>
-                        <img src={imgUrl} alt="" className='playlistcard-imgs' />
-                        <div style={{ backgroundImage: strurl }} className={SuperClass('playlistcard-img-blur','playlistcard-img-blur-hover',ishover)}></div>
-                    </div>
-                    <div>
-                        <p className='playlistcard-wd'>{title}</p>
-                    </div>
-                </Link>
-            </div>
-        )
+    if (!isnull(imgUrl)) {
+      let url = imgUrl + '?param=512y512'
+      let strurl = 'url(' + url + ')'
+      setImgUrl(url)
+      setStrurl(strurl)
     }
+  }, [])
 
-    RanderAlbum = () => {
-        const { title, imgUrl, strurl, ishover, id } = this.state
-        return(
-            <div style={{ position: 'relative' }}>
-                <Link to={'/album/' + id}>
-                    <div className='playlistcard-img-cont'>
-                        <img src={imgUrl} alt="" className='playlistcard-imgs' />
-                        <div style={{ backgroundImage: strurl }} className={SuperClass('playlistcard-img-blur','playlistcard-img-blur-hover',ishover)}></div>
-                    </div>
-                    <div>
-                        <p className='playlistcard-wd'>{title}</p>
-                    </div>
-                </Link>
-            </div>
-        )
-    }
+  const RanderBasic = () => {
+    return (
+      <div style={{ position: 'relative' }}>
+        <div className='playlistcard-img-cont' id={id} onClick={goPlaylist.bind(this)}>
+          <img src={Imgurl} alt="" className='playlistcard-imgs' />
+          <div style={{ backgroundImage: strurl }} className="playlistcard-img-blur"></div>
+        </div>
+        <div>
+          <p className='playlistcard-wd'>{Title}</p>
+        </div>
+      </div>
+    )
+  }
 
-    RanderFM = () => {
-        const { imgUrl } = this.state
-        return (
-            <div style={{ position: 'relative' }}>
-                <div className='playlistcard-img-cont playlistcard-img-cont2' >
-                    <img src={imgUrl} alt="" className='playlistcard-imgs playlistcard-imgs-ani'/>
-                </div>
-                <div className='playlistcard-daily'>
-                    <div className='playlistcard-daily-cont'>
-                        <p className='playlistcard-daily-title'>私 人</p>
-                        <p className='playlistcard-daily-title'>F&nbsp;&nbsp;&nbsp;M</p>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+  const RanderAlbum = () => {
+    return (
+      <div style={{ position: 'relative' }}>
+        <Link to={'/album/' + Id}>
+          <div className='playlistcard-img-cont'>
+            <img src={Imgurl} alt="" className='playlistcard-imgs' />
+            <div style={{ backgroundImage: strurl }} className='playlistcard-img-blur'></div>
+          </div>
+          <div>
+            <p className='playlistcard-wd'>{Title}</p>
+          </div>
+        </Link>
+      </div>
+    )
+  }
 
-    RanderLong = () => {
-        const { imgUrl } = this.state
-        return (
-            <div style={{ position: 'relative' }}>
-                <div className='playlistcard-img-cont playlistcard-img-cont2' >
-                    <img src={imgUrl} alt="" className='playlistcard-imgs playlistcard-imgs-ani'/>
-                </div>
-                <div className='playlistcard-daily'>
-                    <div className='playlistcard-daily-cont'>
-                        <p className='playlistcard-daily-title'>每 日</p>
-                        <p className='playlistcard-daily-title'>推 荐</p>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+  const RanderFM = () => {
+    return (
+      <div style={{ position: 'relative' }}>
+        <div className='playlistcard-img-cont playlistcard-img-cont2' >
+          <img src={Imgurl} alt="" className='playlistcard-imgs playlistcard-imgs-ani' />
+        </div>
+        <div className='playlistcard-daily'>
+          <div className='playlistcard-daily-cont'>
+            <p className='playlistcard-daily-title'>私 人</p>
+            <p className='playlistcard-daily-title'>F&nbsp;&nbsp;&nbsp;M</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
-    RanderPlayer = () => {
-        const { imgUrl, strurl, title, ishover, id } = this.state
-        return (
-            <div style={{ position: 'relative' }}>
-                <Link to={'/player/' + id}>
-                    <div className='playlistcard-img-cont playlistcard-img-cont3' >
-                        <img src={imgUrl} alt="" className='playlistcard-imgs' style={{ borderRadius: '50%'}} />
-                        <div style={{ backgroundImage: strurl }} className={SuperClass('playlistcard-img-blur playlistcard-img-blur-round','playlistcard-img-blur-hover',ishover)}></div>
-                    </div>
-                    <div>
-                        <p className='playlistcard-wd playlistcard-wd-ct'>{title}</p>
-                    </div>
-                </Link>
-            </div>
-        )
-    }
+  const RanderLong = () => {
+    return (
+      <div style={{ position: 'relative' }}>
+        <div className='playlistcard-img-cont playlistcard-img-cont2' >
+          <img src={Imgurl} alt="" className='playlistcard-imgs playlistcard-imgs-ani' />
+        </div>
+        <div className='playlistcard-daily'>
+          <div className='playlistcard-daily-cont'>
+            <p className='playlistcard-daily-title'>每 日</p>
+            <p className='playlistcard-daily-title'>推 荐</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
-    RanderUser = () => {
-        const { imgUrl, strurl, title, ishover, id } = this.state
-        return (
-            <div style={{ position: 'relative' }}>
-                <Link to={'/player/' + id}>
-                    <div className='playlistcard-img-cont playlistcard-img-cont3' >
-                        <img src={imgUrl} alt="" className='playlistcard-imgs' style={{ borderRadius: '50%'}} />
-                        <div style={{ backgroundImage: strurl }} className={SuperClass('playlistcard-img-blur playlistcard-img-blur-round','playlistcard-img-blur-hover',ishover)}></div>
-                    </div>
-                    <div>
-                        <p className='playlistcard-wd playlistcard-wd-ct'>{title}</p>
-                    </div>
-                </Link>
-            </div>
-        )
-    }
+  const RanderPlayer = () => {
+    return (
+      <div style={{ position: 'relative' }}>
+        <div className="playlistcard-img-cont playlistcard-img-cont3" id={id} onClick={goPlayer.bind(this)}>
+          <img src={Imgurl} alt="" className='playlistcard-imgs' style={{ borderRadius: '50%' }} />
+          <div style={{ backgroundImage: strurl }} className='playlistcard-img-blur playlistcard-img-blur-round'></div>
+        </div>
+        <div>
+          <p className='playlistcard-wd playlistcard-wd-ct'>{Title}</p>
+        </div>
+      </div>
+    )
+  }
 
-    setrander(id){
-        switch(id){
-            case 1:
-                return React.createElement(this.RanderBasic);
-            case 2:
-                return React.createElement(this.RanderLong);
-            case 3:
-                return React.createElement(this.RanderPlayer);
-            case 4:
-                return React.createElement(this.RanderFM);
-            case 5:
-                return React.createElement(this.RanderAlbum);
-            default:
-                return React.createElement(this.RanderBasic);
-        }
-    }
+  const RanderUser = () => {
+    return (
+      <div style={{ position: 'relative' }}>
+        <Link to={'/player/' + Id}>
+          <div className='playlistcard-img-cont playlistcard-img-cont3' >
+            <img src={Imgurl} alt="" className='playlistcard-imgs' style={{ borderRadius: '50%' }} />
+            <div style={{ backgroundImage: strurl }} className='playlistcard-img-blur playlistcard-img-blur-round'></div>
+          </div>
+          <div>
+            <p className='playlistcard-wd playlistcard-wd-ct'>{Title}</p>
+          </div>
+        </Link>
+      </div>
+    )
+  }
 
-    render() {
-        const { modelid } = this.state 
-        return (
-            
-            <div style={{textDecoration : 'none' }} onMouseEnter={this.handleMouse(true)} onMouseLeave={this.handleMouse(false)}>
-                
-                    {
-                        this.setrander(modelid)
-                    }
-            </div>
-        )
+  const setrander = (Id) => {
+    switch (Id) {
+      case 1:
+        return React.createElement(RanderBasic);
+      case 2:
+        return React.createElement(RanderLong);
+      case 3:
+        return React.createElement(RanderPlayer);
+      case 4:
+        return React.createElement(RanderFM);
+      case 5:
+        return React.createElement(RanderAlbum);
+      default:
+        return React.createElement(RanderBasic);
     }
+  }
+
+  // eslint-disable-next-line prettier/prettier
+  return(
+    <div style={{ textDecoration: 'none' }} >
+      {
+        setrander(ModelId)
+      }
+    </div>
+  )
+
 }

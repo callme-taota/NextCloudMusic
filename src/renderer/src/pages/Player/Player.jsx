@@ -15,7 +15,7 @@ export default class Player extends Component {
         let playerid;
         let url = window.location.href
         url = url.split('/')
-        if(url.length===5) playerid=url[4];
+        if(url.length===6) playerid=url[5];
         if(playerid!==undefined){
             let playerData = await Aritsts(playerid);
             let followed = false;
@@ -158,11 +158,11 @@ export default class Player extends Component {
                                     key={key}
                                     onClick={this.sendSong.bind(this,key)}
                                     >
-                                        <GridRows 
-                                            name={song.name} 
-                                            id={key + 1} 
-                                            author={song.art} 
-                                            cds={song.aln} 
+                                        <GridRows
+                                            name={song.name}
+                                            id={key + 1}
+                                            author={song.art}
+                                            cds={song.aln}
                                             time={song.time_str}>
                                         </GridRows>
                                     </div>
@@ -173,17 +173,17 @@ export default class Player extends Component {
                                     key={key}
                                     onClick={this.sendSong.bind(this,key)}
                                     >
-                                        <GridRows 
-                                            name={song.name} 
-                                            id={key + 1} 
-                                            author={song.art} 
-                                            cds={song.aln} 
+                                        <GridRows
+                                            name={song.name}
+                                            id={key + 1}
+                                            author={song.art}
+                                            cds={song.aln}
                                             time={song.time_str}>
                                         </GridRows>
                                     </div>
                                 )
                             }
-                            
+
                         })
                     }
                     <div className='PlayerPg-showmore'>
@@ -192,7 +192,7 @@ export default class Player extends Component {
                     </div>
                 </PanelCard>
                 <PanelCard  morebtn={true} ClickEvent={this.moreal} title='专辑' columns='5'>
-                    {   
+                    {
                         al.map(album=>{
                             return(
                                 <SuperPlayListCard title={album.name} imgUrl={album.blurPicUrl} key={album.id} id={album.id} model='album'/>
