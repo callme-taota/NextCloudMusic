@@ -1,0 +1,52 @@
+.Hotsongs-left{
+    line-height: 50px;
+    height: 50px;
+    width: 80px;
+    text-align: center;
+    color: var(--text);
+}
+.Hotsongs-right{
+    flex: 1;
+    color: var(--text);
+}
+.Hotsongs-song{
+    overflow: hidden;
+    display: flex;
+    height: 50px;
+    border-radius: 10px;
+    transition: 0.5s;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.Hotsongs-song:hover{
+    background-color:var(--hover);
+    transition: 0.5s;
+}
+.Hotsongs-song:active{
+    background-color: var(--active);
+    transition: 0.5s;
+}
+.Hotsongs-num{
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-weight: bolder;
+    font-size: 22px;
+    user-select: none;
+}
+.Hotsongs-ct{
+    margin: 0;
+    height: 25px;
+    line-height: 25px;
+    font-weight: lighter;
+    user-select: none;
+    font-size: small;
+}
+.Hotsongs-wd{
+    margin: 0;
+    height: 25px;
+    line-height: 25px;
+    font-weight: 600;
+    user-select: none;
+}

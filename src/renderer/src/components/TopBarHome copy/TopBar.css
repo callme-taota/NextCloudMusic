@@ -1,0 +1,19 @@
+.TopBar-cont{
+    width: calc( 100% - 280px);
+    height: 50px;
+    position: absolute;
+    top: 0;
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: var(--maincard-bg);
+    z-index: 2;
+    -webkit-app-region: drag;
+}
+.TopBar-title{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    margin: 0;
+}

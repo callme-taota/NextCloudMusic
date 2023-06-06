@@ -1,0 +1,13 @@
+.app-main {
+  display: flex;
+  height: 100%;
+}
+.app-bar{
+  -webkit-app-region: drag;
+  height: 40px;
+  position: absolute;
+  width: 280px;
+}
+a{
+  text-decoration: none;
+}

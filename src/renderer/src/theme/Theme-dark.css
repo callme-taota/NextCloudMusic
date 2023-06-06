@@ -1,0 +1,39 @@
+:root{
+  --theme-color : #3793FF;
+  --text: #cecece;
+  --2ntext:#dfdfdf;
+
+  --bg-1:linear-gradient(180deg, #323439 0%, #1c1e26 100%);
+  --bg-2:linear-gradient(90deg,  #323439 0%, #1c1e26 100%);
+  --bg-3:linear-gradient(270deg, #323439 0%, #1c1e26 100%);
+  --bg-4:linear-gradient(200deg, #323439 0%, #1c1e26 100%);
+
+  --pg-scrollbar-t : rgba(255, 255, 255, 0.1);
+  --pg-scrollbar-h : rgba(255, 255, 255, 0.14);
+  --pg-scrollbar-a : rgba(255, 255, 255, 0.2);
+
+
+  --sidebar: #2a2c37;
+  --sidebar-logo : rgba(255, 255, 255, 0.03);
+  --sidebar-logo-hover : rgba(255, 255, 255, 0.1);
+  --sidebar-logo-active : rgba(255, 255, 255, 0.3);
+  --sidebar-card-bg : rgba(0, 0, 0, 0.4);
+  --sidebar-card-btn : #cecece;
+  --sidebar-card-hover : rgba(0, 0, 0, 0.1);
+  --sidebar-card-time-c : #cecece80;
+  --sidebar-card-time-m :  #cecece;
+  --sidebar-card-time-s : #cecece;
+
+  --user-card : rgba(255,255,255, 0.1);  
+  --user-card-hover : rgba(255,255,255, 0.1);
+  --user-card-active : rgba(255,255,255, 0.2);
+  --user-card-level : rgba(255,255,255, 0.1);
+
+  --maincard-bg:#37373760;
+
+  --hover : #cecece20;
+  --active : rgba(255, 255, 255, 0.3);
+
+  --search-input:rgba(0, 0, 0, 0.1);
+    
+  }

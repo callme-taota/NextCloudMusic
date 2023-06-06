@@ -1,0 +1,58 @@
+.Side-Btn{
+    width: 240px;
+    height: 40px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+.Side-Btn:hover{
+    background-color: var(--hover);
+
+}
+.Side-Btn:active{
+    background-color: var(--theme-color);
+}
+.Side-Btn-Acitive{
+    width: 240px;
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.3s;
+    background-color: var(--theme-color);
+}
+.Side-Btn-Acitive:hover{
+    background-color: var(--theme-color);
+}
+.Side-Btn-Acitive:active{
+    background-color:var(--theme-color);
+}
+
+.sidebtn-icon{
+    line-height: 38px;
+    font-size: 22px;
+    margin-left: 24px;
+    float: left;
+    color: var(--text);
+}
+
+.sidebtn-wd{
+    float: left;
+    line-height: 37px;
+    font-size: 20px;
+    margin-left: 30px;
+    user-select: none;
+    font-weight: 500;
+    color: var(--text);
+}
+.sidebtn-sep{
+    height: 24px;
+    width: 1px;
+    background-color: var(--2ntext);
+    display: inline-block;
+    position: absolute;
+    margin-left: 14px;
+    margin-top: 8.5px;
+}
+.too{
+    color: inherit ;
+    text-decoration: none;
+    cursor: default;
+}

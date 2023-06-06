@@ -1,0 +1,17 @@
+.sidebarm-blankholder{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 5px;
+}
+.sidebarm-title{
+   display: block;
+   font-size: 20px;
+   line-height: 60px;
+   height: 60px;
+   padding-left: 22px;
+   color: var(--2ntext);
+   font-weight: lighter;
+   user-select: none;
+
+}

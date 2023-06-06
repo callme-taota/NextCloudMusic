@@ -1,0 +1,28 @@
+.Message-cont{
+    position: absolute;
+    height: calc( 100% - 20px);
+    left: calc( 50% + 130px ) ;
+    z-index: 5;
+    transform: translateX(-50%);
+    margin-top: 20px;
+}
+.Message-single{
+    background-color: var(--theme-color);
+    height: 40px;
+    border-radius: 13px;
+    line-height: 40px;
+    padding-left:  13px;
+    padding-right:  13px;
+    text-align: center;
+    transition: 0.5s;
+    animation: disout 2.02s;
+    margin-top: 8px;
+    color: var(--2ntext);
+    font-weight: bold;
+}
+@keyframes disout {
+    0%{opacity: 0;}
+    20%{opacity: 1;}
+    80%{opacity: 1;}
+    100%{opacity: 0;}
+}

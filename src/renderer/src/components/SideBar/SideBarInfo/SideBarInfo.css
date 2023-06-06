@@ -1,0 +1,32 @@
+.SideBarInfo-c{
+    bottom: 20px;
+    position: absolute;
+    width: 218px;
+}
+.SideBarInfo-more{
+    font-size: 18px;
+    font-weight: lighter;
+    user-select: none;
+    height: 30px;
+    line-height: 30px;
+}
+.SideBarInfo-info{
+    font-size: 16px;
+    font-weight: normal;
+    color: rgb(12, 12, 12);
+    user-select: none;
+    text-align: center;
+}
+.SideBarInfo-url-logo{
+    color:rgb(0, 69, 126) ;
+    font-size: 22px;
+}
+.SideBarInfo-url-logo:link{
+    color:rgb(0, 69, 126) ;
+}
+.SideBarInfo-url-logo:visited{
+    color:rgb(0, 69, 126) ;
+}
+.SideBarInfo-sep{
+    height: 5px;
+}

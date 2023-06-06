@@ -1,0 +1,10 @@
+.ArLink-name{
+    color: var(--2ntext);
+    transition: 0.2s;
+}
+.ArLink-name:hover{
+    color: var(--text);
+    font-weight: bold;
+    text-decoration: underline;
+
+}

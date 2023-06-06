@@ -1,0 +1,36 @@
+.sidebar-logo-c{
+    width: 240px;
+    height: 100px;
+    padding-top: 40px;
+    color: var(--text);
+}
+.sidebar-logo-lable{
+    width: 240px;
+    height: 80px;
+    border-radius: 22px;
+    transition: 0.3s;
+    background-color: var(--sidebar-logo);
+}
+.sidebar-logo-lable:hover{
+    background-color: var(--sidebar-logo-hover);
+
+}
+.sidebar-logo-lable:active{
+    background-color: var(--sidebar-logo-active);
+}
+.sidebar-logo-logo{
+    font-size: 30px;
+    float: left;
+    margin-left: 16px;
+    line-height: 80px;
+    height: 80px;
+}
+.sidebar-logo-title{
+    float: left;
+    line-height: 80px;
+    font-size: 22px;
+    margin-left: 5px;
+    user-select: none;
+    font-weight: bold;
+    height: 80px;
+}

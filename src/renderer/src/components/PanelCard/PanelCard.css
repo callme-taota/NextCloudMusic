@@ -1,0 +1,73 @@
+.PanelCard-cont{
+    padding-left: 60px;
+    padding-right: 71px;
+    margin-top: 26px;
+}
+.PanelCard-top{
+    margin-top: 76px;
+}
+.PanelCard-bg{
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: var(--maincard-bg);
+    border-radius: 1em;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.PanelCard-title{
+    font-weight: 700;
+    font-size: 26px;
+    user-select: none;
+    margin-top: 0;
+    color: var(--text);
+}
+.PanelCard-grid{
+    display: grid;
+}
+.PanelCard-grid1{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 44px 24px;
+}
+.PanelCard-grid2{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 44px 24px;
+}
+.PanelCard-grid3{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 44px 24px;
+}
+.PanelCard-grid4{
+    grid-template-columns: repeat(4, 1fr);
+    gap: 44px 24px;
+}
+.PanelCard-grid5{
+    grid-template-columns: repeat(5, 1fr);
+    gap: 44px 24px;
+}
+.PanelCard-grid6{
+    grid-template-columns: repeat(6, 1fr);
+    gap: 44px 24px;
+}
+.PanelCard-showmore{
+    text-align: center;
+    font-size: 26px;
+    font-weight: bolder;
+    margin-bottom: 0;
+    cursor: default;
+    margin-top: 20px;
+}
+.PanelCard-showmore-btn{
+    transition: 0.3s;
+    width: 60px;
+    padding-top: 2px;
+    height: 28px;
+    cursor: default;
+}
+.PanelCard-showmore-btn:hover{
+    background-color: var(--hover);
+    border-radius: 12px;
+}
+.PanelCard-showmore-btn:active{
+    background-color: var(--active);
+}

@@ -1,0 +1,7 @@
+.SideBar{
+    width: 260px;
+    height: 100%;
+    padding-left: 20px;
+    min-width: 260px;
+    background: var(--sidebar);
+}

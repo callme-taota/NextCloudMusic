@@ -1,0 +1,31 @@
+.ListPg {
+    height: 100%;
+    width: 100%;
+    background: var(--bg-2);
+    overflow-y: scroll;
+}
+
+.ListPg::-webkit-scrollbar {
+    width: 10px;
+    transition: 0.3s;
+}
+
+.ListPg::-webkit-scrollbar-thumb {
+    background-color: var(--pg-scrollbar-t);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.ListPg::-webkit-scrollbar-thumb:hover {
+    background-color: var(--pg-scrollbar-h);
+    transition: 0.3s;
+}
+
+.ListPg::-webkit-scrollbar-thumb:active {
+    background-color: var(--pg-scrollbar-a);
+    transition: 0.3s;
+}
+
+.ListPg::-webkit-scrollbar-track {
+    border-radius: 10px;
+}

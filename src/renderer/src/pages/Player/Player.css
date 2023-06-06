@@ -1,0 +1,122 @@
+.PlayerPg{
+    height: 100%;
+    width: 100%;
+    background: var(--bg-3);
+    overflow-y: scroll;
+}
+.PlayerPg::-webkit-scrollbar {
+    width: 10px;
+    transition: 0.3s;
+}
+
+.PlayerPg::-webkit-scrollbar-thumb {
+    background-color: var(--pg-scrollbar-t);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.PlayerPg::-webkit-scrollbar-thumb:hover {
+    background-color: var(--pg-scrollbar-h);
+    transition: 0.3s;
+}
+
+.PlayerPg::-webkit-scrollbar-thumb:active {
+    background-color: var(--pg-scrollbar-a);
+    transition: 0.3s;
+}
+
+.PlayerPg::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+.PlayerPg-showmore{
+    text-align: center;
+    font-size: 26px;
+    font-weight: bolder;
+    margin-bottom: 0;
+    cursor: default;
+}
+.PlayerPg-showmore-btn{
+    transition: 0.3s;
+    width: 60px;
+    padding-top: 2px;
+    height: 28px;
+    cursor: default;
+}
+.PlayerPg-showmore-btn:hover{
+    background-color: var(--hover);
+    border-radius: 12px;
+}
+.PlayerPg-showmore-btn:active{
+    background-color: var(--active);
+}
+.PlayerPg-header{
+    background-color: var(--maincard-bg);
+    backdrop-filter: saturate(180%) blur(20px);
+    width: 100%;
+    height: 20%;
+    min-height: 220px;
+    position: relative;
+    margin-bottom: 200px;
+    background-size: cover;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
+.PlayerPg-pt-ct{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 90%;
+}
+.PlayerPg-pt{
+    width: 360px;
+    border-radius: 50%;
+}
+.PlayerPg-hd-name{
+    position: absolute;
+    bottom: -4px;
+    left: 60px;
+    font-weight: bolder;
+    font-size: 40px;
+    color: var(--text);
+    user-select: none;
+    display: flex;
+    justify-content: center;
+}
+.PlayerPg-hd-trans{
+    position: absolute;
+    bottom: -30px;
+    left: 60px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: var(--2ntext);
+    user-select: none;
+}
+.PlayerPg-hd-foll{
+    background-color: var(--hover);
+    transition: 0.3s;
+    height: 30px;
+    margin-top: 12px;
+    margin-left: 20px ;
+    border-radius: 10px;
+    font-size:16px;
+    line-height: 30px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    vertical-align: center;
+    font-weight: bolder;
+}
+.PlayerPg-hd-foll:hover{
+    background-color: var(--theme-color);
+}
+.PlayerPg-hd-foll:active{
+    background-color: var(--theme-color);
+}
+.PlayerPg-hd-info{
+    position: absolute;
+    bottom: -20px;
+    right: 60px;
+    font-size: 16px;
+    color: var(--2ntext);
+    user-select: none;
+}
