@@ -3,4 +3,4 @@
 懂得nodejs的可以下下来看看
 
 20230606
-已经用electron打包了，更新了很多界面，很多关于路由跳转出现的问题的还没修复，并且还没整合后端，目前使用nodejs,react,vite,electron
+已经用electron打包了，更新了很多界面，还没整合后端，目前使用nodejs,react,vite,electron
