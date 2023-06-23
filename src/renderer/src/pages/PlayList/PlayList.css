@@ -78,7 +78,7 @@
     line-height: 30px;
     float: left;
     height: 30px;
-    color: lightgray;
+    color: var(--text);
     font-weight: lighter;
     margin-left: 8px;
 }
@@ -86,7 +86,7 @@
     line-height: 30px;
     float: left;
     height: 30px;
-    color: #999;
+    color: var(--2ntext);
     font-weight: lighter;
     margin-left: 8px;
 }
@@ -98,7 +98,7 @@
     width: 66%;
     height: 180px;
     overflow-y: auto;
-    color: var(--text);
+    color: var(--2ntext);
 }
 .Playlist-descr::-webkit-scrollbar {
     width: 10px;

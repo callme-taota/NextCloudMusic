@@ -7,7 +7,7 @@
 
 
 
-*/ 
+*/
 import { Theme_State,Message_State } from "./Pool/Pool";
 
 export function isnull(value){
@@ -51,23 +51,28 @@ export function SuperClass(...args) {
     }
     if(args.length === 4){
         returnClass = defaultclass + ' ';
-        returnClass += flag ? actionclass+added : '' 
+        returnClass += flag ? actionclass+added : ''
         return returnClass
     }
     return 'error';
 }
 
 export const Theme_setter = () => {
-    var time = new Date();
-    var h = time.getHours();
+    const prefersColorScheme = window.matchMedia('(prefers-color-scheme: light)');
     let model;
-    if(h>18 || h<7){
-        model='dark';
-    }else{
+    const set = (flag) => {
+      if(flag){
         model='light';
+      }else{
+        model='dark';
+      }
+      let theme = {model};
+      Theme_State.set(theme);
     }
-    let theme = {model};
-    Theme_State.set(theme);
+    prefersColorScheme.addEventListener('change',(e) => {
+      set(e.matches);
+    })
+    set(prefersColorScheme.matches)
 }
 
 export function TimeFormatter(time){

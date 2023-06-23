@@ -8,7 +8,7 @@ import PubSub from 'pubsub-js'
 
 export default function SuperPlayListCard({ model, title, id, imgUrl }) {
   const [Model, setModel] = useState('basic')
-  const [Models] = useState(['basic', 'long', 'player', 'fm', 'album'])
+  const [Models] = useState(['basic', 'long', 'player', 'fm', 'album', 'user'])
   const [ModelId, setModelid] = useState(1)
   const [Title, setTitle] = useState('专辑/歌手名字')
   const [Imgurl, setImgUrl] = useState(img)
@@ -32,6 +32,12 @@ export default function SuperPlayListCard({ model, title, id, imgUrl }) {
   const goAlbum = (e) => {
     e.preventDefault()
     navigate('/album/' + Id)
+  }
+
+  const goUser = (e) => {
+    e.preventDefault()
+    navigate('/User/' + Id)
+    PubSub.publish('newUser', Id)
   }
 
   useEffect(() => {
@@ -60,8 +66,8 @@ export default function SuperPlayListCard({ model, title, id, imgUrl }) {
 
   const RanderBasic = () => {
     return (
-      <div style={{ position: 'relative' }}>
-        <div className='playlistcard-img-cont' id={id} onClick={goPlaylist.bind(this)}>
+      <div style={{ position: 'relative' }} id={id} onClick={goPlaylist.bind(this)}>
+        <div className='playlistcard-img-cont' >
           <img src={Imgurl} alt="" className='playlistcard-imgs' />
           <div style={{ backgroundImage: strurl }} className="playlistcard-img-blur"></div>
         </div>
@@ -138,7 +144,7 @@ export default function SuperPlayListCard({ model, title, id, imgUrl }) {
     return (
       <div style={{ position: 'relative' }}>
         <Link to={'/player/' + Id}>
-          <div className='playlistcard-img-cont playlistcard-img-cont3' >
+          <div className='playlistcard-img-cont playlistcard-img-cont3' id={id} onClick={goUser.bind(this)} >
             <img src={Imgurl} alt="" className='playlistcard-imgs' style={{ borderRadius: '50%' }} />
             <div style={{ backgroundImage: strurl }} className='playlistcard-img-blur playlistcard-img-blur-round'></div>
           </div>
@@ -153,17 +159,19 @@ export default function SuperPlayListCard({ model, title, id, imgUrl }) {
   const setrander = (Id) => {
     switch (Id) {
       case 1:
-        return React.createElement(RanderBasic);
+        return React.createElement(RanderBasic)
       case 2:
-        return React.createElement(RanderLong);
+        return React.createElement(RanderLong)
       case 3:
-        return React.createElement(RanderPlayer);
+        return React.createElement(RanderPlayer)
       case 4:
-        return React.createElement(RanderFM);
+        return React.createElement(RanderFM)
       case 5:
-        return React.createElement(RanderAlbum);
+        return React.createElement(RanderAlbum)
+      case 6:
+        return React.createElement(RanderUser)
       default:
-        return React.createElement(RanderBasic);
+        return React.createElement(RanderBasic)
     }
   }
 

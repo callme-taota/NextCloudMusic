@@ -130,11 +130,11 @@ export default class Search extends Component {
                             key={key}
                             onClick={this.sendSong.bind(this,key)}
                             >
-                                <GridRows 
-                                    name={song.name} 
-                                    id={key + 1} 
-                                    author={song.art} 
-                                    cds={song.aln} 
+                                <GridRows
+                                    name={song.name}
+                                    id={key + 1}
+                                    author={song.art}
+                                    cds={song.aln}
                                     time={song.time_str}>
                                 </GridRows>
                             </div>
@@ -158,15 +158,15 @@ export default class Search extends Component {
                 </PanelCard>
                 <PanelCard title="歌单" columns='5'>
                     {
-                        playlistRes.map((album) =>
-                            <SuperPlayListCard title={album.name} imgUrl={album.coverImgUrl} key={album.id} id={album.id} model='album'/>
+                        playlistRes.map((playlist) =>
+                            <SuperPlayListCard title={playlist.name} imgUrl={playlist.coverImgUrl} key={playlist.id} id={playlist.id}/>
                         )
                     }
                 </PanelCard>
                 <PanelCard title="用户" columns='5'>
                     {
-                        userRes.map((artists) =>
-                            <SuperPlayListCard title={artists.nickname} imgUrl={artists.avatarUrl} model='player' key={artists.userId} id={artists.userId} />
+                        userRes.map((user) =>
+                            <SuperPlayListCard title={user.nickname} imgUrl={user.avatarUrl} model='user' key={user.userId} id={user.userId} />
                         )
                     }
                 </PanelCard>
@@ -194,5 +194,5 @@ export default class Search extends Component {
             </div>
         )
     }
-        
+
 }

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import './GridRows.css'
 
 export default class GridHead extends Component {
-    
+
     componentDidMount(){
         if(this.props.name){
             this.setState({name : this.props.name})
@@ -30,7 +30,7 @@ export default class GridHead extends Component {
         id :'#',
         time : '时间'
     }
-    
+
 
     render() {
 
@@ -41,7 +41,7 @@ export default class GridHead extends Component {
                 <div className='Gridrows-tx Gridrows-tx-id'>{id}</div>
                 <div className='Gridrows-tx Gridrows-tx-name'>{name}</div>
                 <div className='Gridrows-tx Gridrows-tx-aut'>{author}</div>
-                <div className='Gridrows-tx'>{cds}</div>
+                <div className='Gridrows-tx Gridrows-cds'>{cds}</div>
                 <div className='Gridrows-time'>{time}</div>
             </div>
         )

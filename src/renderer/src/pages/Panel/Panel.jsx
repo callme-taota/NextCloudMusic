@@ -9,6 +9,7 @@ import PlayList from '../PlayList/PlayList';
 import Album from '../Album/Album'
 import Result from '../Search/Result';
 import Player from '../Player/Player';
+import User from '../User/User';
 
 import './Panel.css'
 
@@ -18,7 +19,7 @@ export default class Panel extends Component {
     return (
       <div className='LayoutPanel'>
         <Routes>
-          <Route path="/" element={<Home /> } exact></Route> 
+          <Route path="/" element={<Home /> } exact></Route>
           <Route path="/Home" element={<Home />} />
           <Route path="/Search" element={<Search />} />
           <Route path="/Setting" element={<Setting />} />
@@ -28,6 +29,7 @@ export default class Panel extends Component {
           <Route path="/Album/:albumid" element={<Album />} />
           <Route path="/Result" element={<Result />} />
           <Route path='/Player/:playerid' element={<Player />}></Route>
+          <Route path='/User/:userid' element={<User />}></Route>
         </Routes>
       </div>
     )

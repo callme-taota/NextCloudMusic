@@ -7,7 +7,11 @@
 import axios from 'axios';
 import { isnull } from './fn';
 
-//核心 推送异步数据 返回promise对象，需要使用then进行读取
+/**
+ * 核心 推送异步数据 返回promise对象，需要使用then进行读取
+ * @param {string} apiaddr
+ * @returns {object} data
+ */
 export const AxiosPost = async (apiaddr) => {
     let posturl = "http://localhost:4000" + apiaddr ;
     let data;
@@ -20,7 +24,11 @@ export const AxiosPost = async (apiaddr) => {
     return data;
 }
 
-//推荐歌单
+/**
+ * 推荐歌单
+ * @param {number} limit
+ * @returns {object} data
+ */
 export const Personalized = async (limit) => {
     let data;
     let url = '/personalized'
@@ -37,7 +45,12 @@ export const Personalized = async (limit) => {
     return data.result;
 }
 
-//推荐艺人
+/**
+ * 推荐艺人
+ * @param {number} limit
+ * @param {number} offset
+ * @returns {object} artists
+ */
 export const TopArtists = async (limit,offset) => {
     let data;
     let url = '/top/artists'
@@ -52,7 +65,10 @@ export const TopArtists = async (limit,offset) => {
     return data.artists;
 }
 
-//新专速递
+/**
+ * 新专速递
+ * @returns {object} NewAlbum
+ */
 export const NewAlbum = async () => {
     let data;
     let url = '/album/newest'
@@ -66,7 +82,10 @@ export const NewAlbum = async () => {
     return xdata;
 }
 
-//榜单
+/**
+ * 榜单
+ * @returns {object} TopList
+ */
 export const TopList = async () => {
     let data;
     let url = '/toplist'
@@ -76,7 +95,10 @@ export const TopList = async () => {
     return data.list;
 }
 
-//热搜列表
+/**
+ * 热搜列表
+ * @returns {object} HotSongs
+ */
 export const HotSongs = async () => {
     let data;
     let url = '/search/hot/detail'
@@ -86,10 +108,18 @@ export const HotSongs = async () => {
     return data.data;
 }
 
-//搜索
+/**
+ * 搜索
+ * type: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合, 2000:声音(搜索声音返回字段格式会不一样)
+ * limit : 返回数量 , 默认为 30 offset : 偏移数量，用于分页 , 如 : 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
+ * @param {string} keyword
+ * @param {number} type
+ * @param {number} limit
+ * @param {number} offset
+ * @param {boolean} more
+ * @returns {object} SearchResult
+ */
 export const Search = async (keyword,type,limit,offset,more) => {
-    //type: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合, 2000:声音(搜索声音返回字段格式会不一样)
-    //limit : 返回数量 , 默认为 30 offset : 偏移数量，用于分页 , 如 : 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
     let data;
     let url;
     if(more === true){
@@ -113,6 +143,11 @@ export const Search = async (keyword,type,limit,offset,more) => {
     return data;
 }
 
+/**
+ * 超级搜索
+ * @param {string} keyword
+ * @returns {object}
+ */
 export const SuperSearch = async (keyword) => {
     let music_res = await Search(keyword,1,10,0,true);
     if(music_res.code===200){
@@ -153,7 +188,13 @@ export const SuperSearch = async (keyword) => {
     return obj;
 }
 
-//歌单歌曲
+/**
+ * 歌单歌曲
+ * @param {number} id
+ * @param {number} slimit
+ * @param {number} soffset
+ * @returns {object}
+ */
 export const PlaylistTrack = async (id,slimit,soffset) => {
     let data;
     let offset = 0;
@@ -178,7 +219,11 @@ export const PlaylistTrack = async (id,slimit,soffset) => {
     return songx;
 }
 
-//单曲信息
+/**
+ * 单曲信息
+ * @param {object} SingleSongObject
+ * @returns {object}
+ */
 export const SingleSong = async (objx) => {
     let name = objx.name;
     let id = objx.id;
@@ -202,7 +247,11 @@ export const SingleSong = async (objx) => {
     return SongObj;
 }
 
-//单曲信息 2
+/**
+ * 单曲信息 2
+ * @param {object} SongObject
+ * @returns
+ */
 export const SingleSongEasy = (objs) => {
     let data = [];
     for(let i = 0; i < objs.length; i++){
@@ -238,7 +287,11 @@ export const SingleSongEasy = (objs) => {
     return data;
 }
 
-//播放地址
+/**
+ * 播放地址
+ * @param {number} Songid
+ * @returns {string} songurl
+ */
 export const GetSongUrl = async (id) => {
     let data ;
     let url = '/song/url'
@@ -250,7 +303,11 @@ export const GetSongUrl = async (id) => {
     return songurl;
 }
 
-//歌单信息
+/**
+ * 歌单信息
+ * @param {number} id
+ * @returns
+ */
 export const PlayListInfo = async (id) => {
     let data;
     let url = '/playlist/detail?id='
@@ -279,7 +336,11 @@ export const PlayListInfo = async (id) => {
     return ZipData;
 }
 
-//专辑信息
+/**
+ * 专辑信息
+ * @param {number} id
+ * @returns {object} AlbumObject
+ */
 export const AlbumInfo = async (id) => {
     let data;
     let url = '/album?id='
@@ -310,7 +371,11 @@ export const AlbumInfo = async (id) => {
     return ZipData;
 }
 
-//歌手信息 50songs
+/**
+ * 歌手信息 50songs
+ * @param {number} id
+ * @returns
+ */
 export const Aritsts = async (id) => {
     let data;
     let url ='/artists?id='
@@ -334,7 +399,11 @@ export const Aritsts = async (id) => {
     return artists;
 }
 
-//获取歌手MV
+/**
+ * 获取歌手MV
+ * @param {number} id
+ * @returns
+ */
 export const AritstsMV = async (id) => {
     let data;
     let url = '/artist/mv?id='
@@ -345,7 +414,13 @@ export const AritstsMV = async (id) => {
     return data;
 }
 
-//获取歌手歌单
+/**
+ * 获取歌手歌单
+ * @param {number} id
+ * @param {number} limit
+ * @param {number} offset
+ * @returns
+ */
 export const AritstsAl = async (id,limit,offset) => {
     let data;
     let url = '/artist/album?id=' + id;
@@ -360,7 +435,11 @@ export const AritstsAl = async (id,limit,offset) => {
     return data;
 }
 
-//获取歌手个人详情信息
+/**
+ * 获取歌手个人详情信息
+ * @param {number} id
+ * @returns
+ */
 export const AritstsDetail = async (id) => {
     let data;
     let url = '/artist/detail?id=' + id;
@@ -373,7 +452,10 @@ export const AritstsDetail = async (id) => {
 
 //用户登陆部分
 
-//登陆检测
+/**
+ * 登陆检测
+ * @returns {object} state,profile,flag
+ */
 export const LoginStatus = async () => {
     let data;
     let url = '/login/status'
@@ -388,7 +470,10 @@ export const LoginStatus = async () => {
     return {st,pf,flag};
 }
 
-//获取登陆二维码
+/**
+ * 获取登陆二维码
+ * @returns {object} qrimg,key
+ */
 export const Login_qr = async () => {
     let keydata;
     let timestamp = new Date().getTime();
@@ -412,10 +497,16 @@ export const Login_qr = async () => {
     return {qrimg,key};
 }
 
-//二维码扫码状态读取 800 为二维码过期,801 为等待扫码,802 为待确认,803 为授权登录成功(803 状态码下会返回 cookies)
+/**
+ * 二维码扫码状态读取
+ * 800 为二维码过期,801 为等待扫码,802 为待确认,803 为授权登录成功(803 状态码下会返回 cookies)
+ * @param {number} key
+ * @returns {object} data
+ */
 export const Login_qr_check = async (key) => {
     let data ;
-    let url = '/login/qr/check?key=' + key;
+    let timestamp = new Date().getTime();
+    let url = '/login/qr/check?key=' + key + '&timestamp=' + timestamp;
     await AxiosPost(url).then(res => {
         data = res;
     })
