@@ -1,0 +1,16 @@
+.Logout-pg{
+  height: 100%;
+  width: 100%;
+  background: var(--bg-2);
+  position: relative;
+}
+.Logout-text{
+  color: var(--text);
+  width: 100%;
+  text-align: center;
+  top: 40%;
+  font-weight: bold;
+  font-size: larger;
+  position: absolute;
+  user-select: none;
+}

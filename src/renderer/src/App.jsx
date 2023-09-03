@@ -13,8 +13,6 @@ function App() {
   const [model,setmodel] = useState('light');
 
   useEffect(()=>{
-    const prefersColorScheme = window.matchMedia('(prefers-color-scheme: light)');
-    console.log(prefersColorScheme);
     Theme_setter();
     let Theme = Theme_State.get();
     let md = Theme.model;

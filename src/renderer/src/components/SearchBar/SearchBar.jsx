@@ -1,5 +1,5 @@
 import React, {  useEffect  , useState  } from 'react'
-
+import { SpaceKeyListener } from '../../function/Pool/Pool';
 import './SearchBar.css'
 
 
@@ -14,6 +14,11 @@ const SearchBar = ({search}) => {
             document.removeEventListener('keydown',handleKeyDown);
         }
     })
+
+    const setFocus = (f) => {
+      let obj = {'Listening' : !f};
+      SpaceKeyListener.set(obj);
+    }
 
     const handleChange = (e) => {
         let k = e.target.value;
@@ -38,6 +43,8 @@ const SearchBar = ({search}) => {
             onKeyDown={(e)=>handleKeyDown(e)}
             value={kw}
             onChange={(e) => handleChange(e)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
             placeholder='搜索'/>
             <button className='search-action' onClick={Handlesearch}></button>
         </div>

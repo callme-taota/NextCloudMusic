@@ -23,6 +23,10 @@ export const Theme_State = new Action(S.NewConn({
 export const Message_State = new Action(S.NewConn({
     msgArr : [],
 },"Message"));
+
+export const SpaceKeyListener = new Action(S.NewConn({
+    Listening : true,
+},"SpaceKeyListener"));
 // S.Subscribe((_)=>{
 //     console.log(_);
 // });

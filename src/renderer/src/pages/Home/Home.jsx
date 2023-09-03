@@ -8,49 +8,49 @@ import SuperPlayListCard from '../../components/PlayListCard/PlayListCardSuper'
 
 import { LoginStatus, Login_qr ,Login_qr_check } from '../../function/api'
 
-let CheckQRkey;
+let CheckQRkey
 
 export default function Home() {
   const [UserCardOpacity, setUserCardOpacity] = useState(1)
-  const [TopBarOpacity, setTopBarOpacity] = useState(0);
-  const [LgStatus, setLoginStatus] = useState(false);
-  const [UserProfile, setUserProfile] = useState({});
-  const [QRsrc, setQRsrc] = useState('');
+  const [TopBarOpacity, setTopBarOpacity] = useState(0)
+  const [LgStatus , setLoginStatus] = useState(false)
+  const [UserProfile , setUserProfile] = useState({})
+  const [QRsrc, setQRsrc] = useState('')
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, true);
+    window.addEventListener('scroll', handleScroll, true)
     const fetch = async () => {
-      const { st, pf, flag } = await LoginStatus();
+      const { st, pf, flag } = await LoginStatus()
       if (flag === 0 || st < 0) {
-        setLoginStatus(false);
-        const { qrimg, key } = await Login_qr();
-        setQRsrc(qrimg);
-        CheckQRkey =key;
+        setLoginStatus(false)
+        const { qrimg, key } = await Login_qr()
+        setQRsrc(qrimg)
+        CheckQRkey = key
       } else {
-        setLoginStatus(true);
-        setUserProfile(pf);
+        setLoginStatus(true)
+        setUserProfile(pf)
       }
-    };
+    }
     fetch()
     const checkLog = async () => {
-      let data = await Login_qr_check(CheckQRkey);
+      let data = await Login_qr_check(CheckQRkey)
       if (data.code === 800) {
 
       }
       if (data.code === 803) {
-        setLoginStatus(true);
-        const { pf } = await LoginStatus();
-        setUserProfile(pf);
+        setLoginStatus(true)
+        const { pf } = await LoginStatus()
+        setUserProfile(pf)
       }
     }
 
     let LoginInterval = setInterval(() => {
-      checkLog();
-    }, 1000);
+      checkLog()
+    }, 1000)
 
-    return (() => {
-      window.removeEventListener('scroll', handleScroll);
-      clearInterval(LoginInterval);
+    return (()=>{
+      window.removeEventListener('scroll', handleScroll)
+      clearInterval(LoginInterval)
     })
   }, [])
 

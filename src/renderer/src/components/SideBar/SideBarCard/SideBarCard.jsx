@@ -3,7 +3,7 @@ import './SideBarCard.css'
 import img from '../../../img/martin_garrix_pressure.jpg'
 import { PlayCircleFilled, StepBackwardOutlined, StepForwardOutlined, SoundOutlined, RetweetOutlined , PauseCircleFilled } from '@ant-design/icons'
 import { SendMessage } from '../../../function/fn'
-import { PlayList_State } from '../../../function/Pool/Pool'
+import { PlayList_State , SpaceKeyListener } from '../../../function/Pool/Pool'
 
 import { GetSongUrl } from '../../../function/api'
 import ArtistsLink from '../../Artists_Link/ArtistsLink'
@@ -21,7 +21,7 @@ export default class SideBarCard extends Component {
     }
 
     onKeyDown = (e) => {
-        if(e.keyCode === 32){
+        if(e.keyCode === 32 && SpaceKeyListener.get().Listening ){
             let isplaying = this.state.isplaying;
             this.play(!isplaying);
         }
@@ -35,7 +35,7 @@ export default class SideBarCard extends Component {
         let songUrl = await GetSongUrl(id);
         let name =song.name;
         let artists = song.art;
-        let imgUrl = song.picUrl; 
+        let imgUrl = song.picUrl;
         this.setState({ name , artists , imgUrl , songUrl })
     }
 
@@ -112,7 +112,7 @@ export default class SideBarCard extends Component {
 
     play = (flag) => {
         if(flag===true){
-            this.SettotalTime();     
+            this.SettotalTime();
             this.setState({isplaying: true});
             this.Audioref.play()
             this.Audioref.ontimeupdate = ()=> {
@@ -126,7 +126,7 @@ export default class SideBarCard extends Component {
                 this.SetcurrentTime();
             }
         }
-        
+
     }
 
     handleClick = (e) => {
@@ -158,9 +158,9 @@ export default class SideBarCard extends Component {
                 <div className='Side-Card-author-c'>
                     <p className='Side-Card-author'><ArtistsLink art={artists}></ArtistsLink></p>
                 </div>
-                <div className='Side-Card-time-c' 
-                    onMouseDown={()=>this.handleClick(true)} 
-                    onMouseMove={e=>this.drag(e)} 
+                <div className='Side-Card-time-c'
+                    onMouseDown={()=>this.handleClick(true)}
+                    onMouseMove={e=>this.drag(e)}
                     onMouseUp={() => this.handleClick(false)}
                     onMouseLeave={() => this.handleClick(false)}>
                     <div className='Side-Card-time-m' style={{ width: strpercentage }} >
